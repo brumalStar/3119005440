@@ -7,6 +7,7 @@ import java.util.List;
 
 public class calcSimilarityUtil {
 
+    // 调用MD5算法来计算hash值
     public static String calcHashByMd5(String str) {
         try {
             // 调用java自带的数据加密类，并指定其为MD5算法
@@ -15,7 +16,8 @@ public class calcSimilarityUtil {
             md.update(str.getBytes(StandardCharsets.UTF_8));
             byte[] digest = md.digest();
             BigInteger bi = new BigInteger(1, digest);
-            String hash = bi.toString(16);
+            String hash = bi.toString(2);
+            // 保证生成的是一个128位散列值
             while (hash.length() < 128) {
                 hash += "0";
             }
@@ -29,9 +31,12 @@ public class calcSimilarityUtil {
 
     public static String calcSimHash(String str) {
         int[] storeHash = new int[128];
+        // 分词
         List<String> keywordList = cuttingWordsUtil.cuttingWords(str);
         int size = keywordList.size();
+        // 遍历分词得到的关键词组
         for (String item : keywordList) {
+            // 调用上面计算hash的方法
             String hash = calcHashByMd5(item);
             // 将 hash值转化为数组，方便后续比较以及加权
             char char_hash[] = hash.toCharArray();
@@ -43,6 +48,7 @@ public class calcSimilarityUtil {
                 }
             }
         }
+        // 降维 方便后面计算hanmming distance
         String SimHash = "";
         for (int i = 0; i < storeHash.length; i++) {
             if (storeHash[i] <= 0)
@@ -69,6 +75,7 @@ public class calcSimilarityUtil {
     }
 
     public static double calcSimilarity(String simHash1, String simHash2) {
+        //调用
         int hammingDistance = calcHammingDistance(simHash1, simHash2);
 
         double similarity = 0.01 * (100 - hammingDistance * 100 / 128);
