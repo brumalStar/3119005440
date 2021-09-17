@@ -6,9 +6,9 @@ import com.brumalStar.utils.convertUtils;
 public class Application {
     public static void main(String[] args){
         // 顺序读取 在命令行键入的文件名
-       String str1 = convertUtils.convertTxt2String("G:\\testText\\orig.txt");
-       String str2 = convertUtils.convertTxt2String("G:\\testText\\orig_0.8_dis_15.txt");
-       String resultOut = "res";
+       String str1 = convertUtils.convertTxt2String(args[0]);
+       String str2 = convertUtils.convertTxt2String(args[1]);
+       String resultOut = args[2];
 
        //根据 存入的字符串 求出对应的 SimHash值
         String simHash1 = calcSimilarityUtil.calcSimHash(str1);
