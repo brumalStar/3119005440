@@ -3,6 +3,7 @@ package com.brumalStar.utils;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.text.NumberFormat;
 import java.util.List;
 
 public class calcSimilarityUtil {
@@ -47,7 +48,7 @@ public class calcSimilarityUtil {
                 }
             }
         }
-        // 降维 方便后面计算hanmming distance
+        // 降维 方便后面计算hamMing distance
         StringBuilder SimHash = new StringBuilder();
         for (int hash : storeHash) {
             if (hash <= 0)
@@ -73,13 +74,15 @@ public class calcSimilarityUtil {
         return hammingDistance;
     }
 
-    public static double calcSimilarity(String simHash1, String simHash2) {
+    public static String calcSimilarity(String simHash1, String simHash2) {
         //调用
-        int hammingDistance = calcHammingDistance(simHash1, simHash2);
-
+        double hammingDistance = calcHammingDistance(simHash1, simHash2);
         double similarity = 0.01 * (100 - hammingDistance * 100 / 128);
-
-        return similarity;
+        NumberFormat nt = NumberFormat.getPercentInstance();
+        nt.setMinimumFractionDigits(2);
+        nt.format(similarity);
+        String result = nt.format(similarity);
+        return result ;
     }
 
 }

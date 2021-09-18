@@ -41,7 +41,7 @@ public class calcSimilarityUtilTest {
         String str2 = convertUtils.convertTxt2String("G:\\testText\\orig_0.8_add.txt");
         int hammingDistance = calcSimilarityUtil.calcHammingDistance(calcSimilarityUtil.calcSimHash(str1),
                 calcSimilarityUtil.calcSimHash(str2));
-        double similarity = calcSimilarityUtil.calcSimilarity(calcSimilarityUtil.calcSimHash(str1),
+        String similarity = calcSimilarityUtil.calcSimilarity(calcSimilarityUtil.calcSimHash(str1),
                 calcSimilarityUtil.calcSimHash(str2));
 
         System.out.println("原文本和抄袭文本的海明距离为：" + hammingDistance);

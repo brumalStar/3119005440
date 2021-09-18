@@ -15,7 +15,7 @@ public class Application {
         String simHash2 = calcSimilarityUtil.calcSimHash(str2);
 
        // 根据读入的文件求出它们的相似度
-        double similarity = calcSimilarityUtil.calcSimilarity(simHash1,simHash2);
+        String similarity = calcSimilarityUtil.calcSimilarity(simHash1,simHash2);
 
         // 将计算结果写入到指定文件
         convertUtils.convertResult2Txt(similarity, resultOut);

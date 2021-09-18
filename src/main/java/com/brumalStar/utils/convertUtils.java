@@ -31,15 +31,14 @@ public class convertUtils {
         return str.toString();
     }
 
-    public static void convertResult2Txt(double txt, String txtPath) {
-        String str = Double.toString(txt);
+    public static void convertResult2Txt(String txt, String txtPath) {
         File file = new File(txtPath);
         FileWriter fileWriter;
         try {
             // 按字符向流中 写入接收到的输出数据 ，此处append参数的属性为true，表明将字节写入文件末尾
             fileWriter = new FileWriter(file, true);
             // 对需要的结果输出部分进行截取
-            fileWriter.write(str, 0, (str.length() > 3 ? 4 : str.length()));
+            fileWriter.write(txt, 0, txt.length());
             fileWriter.write("\r\n");
             fileWriter.close();
         } catch (IOException e) {
