@@ -24,6 +24,7 @@ public class convertUtilsTest {
     public void wrongFileRead() {
         //路径错误的情况
         String str = convertUtils.convertTxt2String("G:\\orig.txt");
+        System.out.println(str);
     }
 
 
@@ -31,17 +32,17 @@ public class convertUtilsTest {
     public void fileWrite() {
         // 成功将结果写入了指定目录下的指定文件
         double[] result = {0.67, 0.86, 0.91, 0.79, 0.69};
-        for (int i = 0; i < result.length; i++) {
-            convertUtils.convertResult2Txt(result[i], "G:\\testResult.txt");
+        for (double v : result) {
+            convertUtils.convertResult2Txt(v, "G:\\testResult.txt");
         }
     }
 
     @Test
-    public void wrongfileWrite(){
+    public void wrongFileWrite(){
         // 路径错误，写入失败
         double[] result = {0.67, 0.86, 0.91, 0.79, 0.69};
-        for (int i = 0; i < result.length; i++) {
-            convertUtils.convertResult2Txt(result[i], "G:\\result\\testResult.txt");
+        for (double v : result) {
+            convertUtils.convertResult2Txt(v, "G:\\result\\testResult.txt");
         }
     }
 
