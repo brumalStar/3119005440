@@ -80,9 +80,7 @@ public class calcSimilarityUtil {
         double similarity = 0.01 * (100 - hammingDistance * 100 / 128);
         NumberFormat nt = NumberFormat.getPercentInstance();
         nt.setMinimumFractionDigits(2);
-        nt.format(similarity);
-        String result = nt.format(similarity);
-        return result ;
+        return nt.format(similarity);
     }
 
 }

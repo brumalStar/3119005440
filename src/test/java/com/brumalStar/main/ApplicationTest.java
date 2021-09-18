@@ -5,8 +5,6 @@ import com.brumalStar.utils.calcSimilarityUtil;
 import com.brumalStar.utils.convertUtils;
 import org.junit.Test;
 
-import java.text.NumberFormat;
-
 public class ApplicationTest {
 
     @Test
@@ -76,7 +74,7 @@ public class ApplicationTest {
         String[] str = new String[2];
         str[0] = convertUtils.convertTxt2String("G:\\testText\\orig.txt");
         str[1] = convertUtils.convertTxt2String("G:\\testText\\orig_0.8_dis_15.txt");
-        double distance = calcSimilarityUtil.calcHammingDistance(calcSimilarityUtil.calcSimHash(str[0]),calcSimilarityUtil.calcSimHash(str[1]));
+        int distance = calcSimilarityUtil.calcHammingDistance(calcSimilarityUtil.calcSimHash(str[0]),calcSimilarityUtil.calcSimHash(str[1]));
         String similarity = calcSimilarityUtil.calcSimilarity(calcSimilarityUtil.calcSimHash(str[0]),calcSimilarityUtil.calcSimHash(str[1]));
         System.out.println("海明距离：" + distance);
         System.out.println("原文本和抄袭文本的相似度：" + similarity);
